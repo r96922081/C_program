@@ -1,6 +1,6 @@
-#include "util.h"
-#include "ArrayList.h"
-#include "Matrix.h"
+#include "../util/util.h"
+#include "../ds/ArrayList.h"
+#include "../ds/Matrix.h"
 #include "_8_5_EightQueen.h"
 
 

@@ -1,4 +1,4 @@
-#include "Matrix.h"
+#include "../ds/Matrix.h"
 
 void MagicSquareOdd(int odd)
 {

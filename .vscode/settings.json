@@ -1,0 +1,8 @@
+{
+    "files.associations": {
+        "linkedlist.h": "c",
+        "_8_5_eightqueen.h": "c",
+        "matrix.h": "c",
+        "arraylist.h": "c"
+    }
+}

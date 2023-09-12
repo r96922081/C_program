@@ -1,10 +1,10 @@
 #include "stdio.h"
 #include "stdlib.h"
-#include "util.h"
-#include "LinkedList.h"
-#include "ArrayList.h"
-#include "_8_5_EightQueen.h"
-#include "_8_1_MagicSquareOdd.h"
+#include "util/util.h"
+#include "ds/LinkedList.h"
+#include "ds/ArrayList.h"
+#include "c100/_8_5_EightQueen.h"
+#include "c100/_8_1_MagicSquareOdd.h"
 
 int main(){
     //Solve8Queens();

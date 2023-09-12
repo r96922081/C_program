@@ -1,5 +1,5 @@
 #include "LinkedList.h"
-#include "util.h"
+#include "../util/util.h"
 
 void LinkedListUt();
 void LinkedListUt_Append_Get();

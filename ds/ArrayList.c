@@ -1,5 +1,5 @@
 #include "ArrayList.h"
-#include "util.h"
+#include "../util/util.h"
 
 typedef struct ArrayList ArrayList;
 

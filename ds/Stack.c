@@ -15,7 +15,6 @@ typedef struct Stack {
 
 void InitStack(Stack* s) {
     memset(s, 0, sizeof(Stack));
-    s->list = malloc(LinkedList);
     InitLinkedList(s->list);
 }
 
