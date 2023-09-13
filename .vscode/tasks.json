@@ -9,10 +9,13 @@
 				"-w",
 				"-fdiagnostics-color=always",
 				"-g",
-				"${workspaceFolder}/*.c",
+				"${workspaceFolder}/main.c",
 				"${workspaceFolder}/ds/*.c",
 				"${workspaceFolder}/c100/*.c",
 				"${workspaceFolder}/util/*.c",
+				"-I${workspaceFolder}/util",
+				"-I${workspaceFolder}/c100",
+				"-I${workspaceFolder}/ds",
 				"-o",
 				"${workspaceFolder}/main"
 			],
@@ -24,6 +27,33 @@
 			],
 			"group": "build",
 			"detail": "compiler: /usr/bin/gcc"
-		}
+		},
+		{
+			"type": "cppbuild",
+			"label": "Ut_build",
+			"command": "/usr/bin/gcc",
+			"args": [
+				"-w",
+				"-fdiagnostics-color=always",
+				"-g",
+				"${workspaceFolder}/Ut.c",
+				"${workspaceFolder}/ds/*.c",
+				"${workspaceFolder}/c100/*.c",
+				"${workspaceFolder}/util/*.c",
+				"-I${workspaceFolder}/util",
+				"-I${workspaceFolder}/c100",
+				"-I${workspaceFolder}/ds",
+				"-o",
+				"${workspaceFolder}/Ut"
+			],
+			"options": {
+				"cwd": "${workspaceFolder}"
+			},
+			"problemMatcher": [
+				"$gcc"
+			],
+			"group": "build",
+			"detail": "compiler: /usr/bin/gcc"
+		}		
 	]
 }

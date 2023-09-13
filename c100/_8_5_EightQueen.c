@@ -54,8 +54,7 @@ int Backtracking(Matrix* matrix, int row) {
 
 void Solve8Queens() 
 {
-    Matrix* matrix = malloc(sizeof(Matrix));
-    InitMatrix(matrix, 8, 8);
+    Matrix* matrix = NewMatrix(8, 8);
 
     int count = Backtracking(matrix, 0);
     printf("count = %d\n", count);

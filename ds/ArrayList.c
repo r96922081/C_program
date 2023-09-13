@@ -1,81 +1,30 @@
 #include "ArrayList.h"
-#include "../util/util.h"
+#include "util.h"
 
 typedef struct ArrayList ArrayList;
 
-/*
-typedef struct ArrayList {
-    int size;
-    void* data;
-    void (*Insert)(ArrayList*, void* value);
-    void (*Append)(ArrayList*, void* value);
-    void* (*Get)(ArrayList*, int index);
-    void (*Delete)(ArrayList*, int index);
-} ArrayList;
-*/
+ArrayList* NewArrayList();
+void DeleteArrayList(ArrayList* list) ;
 
-void InitArrayList(ArrayList*);
-void ArrayListUt();
-void ArrayListUt_Get_Set_Append();
-void ArrayListAppend(ArrayList* list, void* value);
-void* ArrayListGet(ArrayList* list, int index);
-void ArrayListSet(ArrayList* list, int index, void* value);
-void ArrayListSort(ArrayList* list, int (*compareFunction)(const void *, const void*));
-void ArrayListSort2(ArrayList* list, int low, int high, int (*compareFunction)(const void *, const void*));
-int ArrayListSortPartition(ArrayList* list, int low, int high, int (*compareFunction)(const void *, const void*));
-void ArrayListSortSwap(ArrayList* list, int i, int j);
+static void Append(ArrayList* list, void* value);
+static void* Get(ArrayList* list, int index);
+static void Set(ArrayList* list, int index, void* value);
+static void Sort(ArrayList* list, int (*compareFunction)(const void *, const void*));
+static void Sort2(ArrayList* list, int low, int high, int (*compareFunction)(const void *, const void*));
+static int SortPartition(ArrayList* list, int low, int high, int (*compareFunction)(const void *, const void*));
+static void SortSwap(ArrayList* list, int i, int j);
 
-int compareFunction(const void* i, const void* j) {
-    return (int)i - (int)j;
-}
 
-void ArrayListUt_Get_Set_Append() {
-    ArrayList l2;
-    ArrayList* l = &l2;
-    InitArrayList(l);
-
-    for (int i = 0; i < 100; i++) {
-        l->Append(l, i);
-    }
-
-    check(l->size == 100);
-    for (int i = 0; i < 100; i++) {
-        check(l->Get(l, i) == i);
-    }  
-
-    l->Set(l, 1, 111);
-    check(l->Get(l, 1) == 111);
-}
-
-void ArrayListUt_Sort() {
-    ArrayList l2;
-    ArrayList* l = &l2;
-    InitArrayList(l);
-
-    for (int i = 0; i < 100; i++) {
-        l->Append(l, 99 - i);
-    }
-
-    l->Sort(l, compareFunction);
-
-    for (int i = 0; i < 100; i++) {
-        check(l->Get(l, i) == i);
-    }      
-}
-
-void ArrayListUt() {
-    ArrayListUt_Get_Set_Append();
-    ArrayListUt_Sort();
-}
-
-void InitArrayList(ArrayList* list) {
-    memset(list, 0, sizeof(ArrayList));
+ArrayList* NewArrayList() {
+    ArrayList* list = calloc(1, sizeof(ArrayList));
     list->capacity = 1;    
     list->data = malloc(1 * sizeof(void*));
-    list->Get = ArrayListGet;
-    list->Append = ArrayListAppend;
-    list->Set = ArrayListSet;
-    list->Sort = ArrayListSort;
+    list->Get = Get;
+    list->Append = Append;
+    list->Set = Set;
+    list->Sort = Sort;
+
+    return list;
 }
 
 void DeleteArrayList(ArrayList* list) {
@@ -83,7 +32,7 @@ void DeleteArrayList(ArrayList* list) {
     free(list);
 }
 
-void ArrayListAppend(ArrayList* list, void* value) {
+static void Append(ArrayList* list, void* value) {
     if (list->size + 1 > list->capacity) {
         list->capacity *= 2;
         void** data2 = malloc(list->capacity * sizeof(void*));
@@ -97,15 +46,15 @@ void ArrayListAppend(ArrayList* list, void* value) {
     list->size++;
 }
 
-void* ArrayListGet(ArrayList* list, int index) {
+static void* Get(ArrayList* list, int index) {
     return *(list->data + index);
 }
 
-void ArrayListSet(ArrayList* list, int index, void* value) {
+static void Set(ArrayList* list, int index, void* value) {
     *(list->data + index) = value;
 }
 
-void ArrayListSortSwap(ArrayList* list, int i, int j) {
+static void SortSwap(ArrayList* list, int i, int j) {
     void* temp = list->Get(list, j);
     void* iValue = list->Get(list, i);
     list->Set(list, j, iValue);
@@ -113,7 +62,7 @@ void ArrayListSortSwap(ArrayList* list, int i, int j) {
 }
 
 
-int ArrayListSortPartition(ArrayList* list, int low, int high, int (*compareFunction)(const void *, const void*)) {
+static int SortPartition(ArrayList* list, int low, int high, int (*compareFunction)(const void *, const void*)) {
     int pivot = list->Get(list, high);
     int i = (low - 1);
 
@@ -121,21 +70,21 @@ int ArrayListSortPartition(ArrayList* list, int low, int high, int (*compareFunc
         int jValue = list->Get(list, j);
         if (compareFunction(jValue, pivot) <= 0) {
             i++;
-            ArrayListSortSwap(list, i, j);
+            SortSwap(list, i, j);
         }
     }
-    ArrayListSortSwap(list, i + 1, high);
+    SortSwap(list, i + 1, high);
     return (i + 1);
 }
 
-void ArrayListSort2(ArrayList* list, int low, int high, int (*compareFunction)(const void *, const void*)) {
+static void Sort2(ArrayList* list, int low, int high, int (*compareFunction)(const void *, const void*)) {
     if (low < high) {
-        int pivot = ArrayListSortPartition(list, low, high, compareFunction);
-        ArrayListSort2(list, low, pivot - 1, compareFunction);
-        ArrayListSort2(list, pivot + 1, high, compareFunction);  
+        int pivot = SortPartition(list, low, high, compareFunction);
+        Sort2(list, low, pivot - 1, compareFunction);
+        Sort2(list, pivot + 1, high, compareFunction);  
     }
 }
 
-void ArrayListSort(ArrayList* list, int (*compareFunction)(const void *, const void*)) {
-    ArrayListSort2(list, 0, list->size - 1, compareFunction);
+static void Sort(ArrayList* list, int (*compareFunction)(const void *, const void*)) {
+    Sort2(list, 0, list->size - 1, compareFunction);
 }

@@ -15,7 +15,7 @@ typedef struct ArrayList {
     void (*Sort)(ArrayList* list, int (*compareFunction)(const void *, const void*));
 } ArrayList;
 
-void InitArrayList(ArrayList*);
+ArrayList* NewArrayList();
 void DeleteArrayList(ArrayList*);
 
 void ArrayListUt();

@@ -13,7 +13,7 @@ typedef struct Stack {
     int (*IsEmpty)(Stack*)
 } Stack;
 
-void InitStack(Stack*);
+Stack* NewStack();
 void DeleteStack(Stack*);
 
 

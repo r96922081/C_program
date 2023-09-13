@@ -14,7 +14,7 @@ typedef struct Matrix {
     void* (*Get)(Matrix* matrix, int row, int column);
 } Matrix;
 
-void InitMatrix(Matrix* matrix, int rowCount, int columnCount);
+Matrix* NewMatrix(int rowCount, int columnCount);
 void DeleteMatrix(Matrix* matrix);
 
 #endif

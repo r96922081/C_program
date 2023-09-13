@@ -1,31 +1,34 @@
 #include "Matrix.h"
 #include "ArrayList.h"
 
-void MatrixPrint(Matrix*);
-void MatrixSet(Matrix* matrix, int row, int column, void* value);
-void* MatrixGet(Matrix* matrix, int row, int column);
+Matrix* NewMatrix(int rowCount, int columnCount);
+void DeleteMatrix(Matrix* matrix);
 
-void InitMatrix(Matrix* matrix, int rowCount, int columnCount) {
-    memset(matrix, 0, sizeof(matrix));
+static void Print(Matrix*);
+static void Set(Matrix* matrix, int row, int column, void* value);
+static void* Get(Matrix* matrix, int row, int column);
+
+Matrix* NewMatrix(int rowCount, int columnCount) {
+    Matrix* matrix = calloc(1, sizeof(Matrix));
     matrix->row = rowCount;
     matrix->column = columnCount;
-    matrix->list = malloc(sizeof(ArrayList));
-    InitArrayList(matrix->list);
+    matrix->list = NewArrayList();
 
     for (int i = 0; i < rowCount; i++) {
-        ArrayList* row = malloc(sizeof(ArrayList));
-        InitArrayList(row);
+        ArrayList* row = NewArrayList();
         for (int j = 0; j < columnCount; j++) {
             row->Append(row, 0);
         }
         matrix->list->Append(matrix->list, row);
     }        
-    matrix->Get = MatrixGet;
-    matrix->Set = MatrixSet;
-    matrix->Print = MatrixPrint;
+    matrix->Get = Get;
+    matrix->Set = Set;
+    matrix->Print = Print;
+
+    return matrix;
 }
 
-void MatrixPrint(Matrix* matrix) {
+static void Print(Matrix* matrix) {
     for (int i = 0; i < matrix->row; i++) {
         ArrayList* row = matrix->list->Get(matrix->list, i);
         printf("%d", row->Get(row, 0));
@@ -37,12 +40,12 @@ void MatrixPrint(Matrix* matrix) {
     printf("\n");
 }
 
-void MatrixSet(Matrix* matrix, int rowIndex, int column, void* value) {
+static void Set(Matrix* matrix, int rowIndex, int column, void* value) {
     ArrayList* row = matrix->list->Get(matrix->list, rowIndex);
     row->Set(row, column, value);
 }
 
-void* MatrixGet(Matrix* matrix, int rowIndex, int column) {
+static void* Get(Matrix* matrix, int rowIndex, int column) {
     ArrayList* row = matrix->list->Get(matrix->list, rowIndex);
     return row->Get(row, column);
 }

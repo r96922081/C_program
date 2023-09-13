@@ -2,8 +2,7 @@
 
 void MagicSquareOdd(int odd)
 {
-    Matrix* m = malloc(sizeof(Matrix));
-    InitMatrix(m, odd, odd);
+    Matrix* m = NewMatrix(odd, odd);
 
     int value = 1;
     int row = 0;

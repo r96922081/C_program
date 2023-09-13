@@ -18,12 +18,12 @@ typedef struct LinkedListNode {
     LinkedListNode* prev;
     void* value;    
     void (*InsertAfter)(LinkedListNode*, void*);
-    void (*InsertBefore)(LinkedListNode*, void*);  
-
+    void (*InsertBefore)(LinkedListNode*, void*); 
     LinkedList* _list;
 }LinkedListNode;
 
-void InitLinkedList(LinkedList*);
+LinkedList* NewLinkedList();
+void DeleteLinkedList(LinkedList*);
 
 void LinkedListUt();
 
