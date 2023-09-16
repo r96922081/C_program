@@ -5,6 +5,7 @@
         "matrix.h": "c",
         "arraylist.h": "c",
         "_8_1_magicsquareodd.h": "c",
-        "stack.h": "c"
+        "stack.h": "c",
+        "type_traits": "c"
     }
 }

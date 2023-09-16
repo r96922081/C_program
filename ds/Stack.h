@@ -12,6 +12,8 @@ typedef struct Stack {
     void* (*Pop)(Stack*);
     int (*IsEmpty)(Stack*);
     int (*GetSize)(Stack*);
+    void (*PrintFromTopToBottom)(Stack*);
+    void (*PrintFromBottomToTop)(Stack*);
 } Stack;
 
 Stack* NewStack();
