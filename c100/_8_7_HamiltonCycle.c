@@ -64,10 +64,6 @@ void _8_7_HamiltonCycle() {
     _8_7_HamiltonCycle_2();
 }
 
-typedef struct Stack {
-    int a;
-}Stack;
-
 static void _8_7_HamiltonCycle_main2(Matrix* m, int startNode, int currentNode, int* selected, LinkedList* answer) {
     if (selected[currentNode] != 0)
         return;
