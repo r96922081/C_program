@@ -1,6 +1,6 @@
 #include "Matrix.h"
 
-void MagicSquareOdd(int odd)
+void _8_1_MagicSquareOdd(int odd)
 {
     Matrix* m = NewMatrix(odd, odd);
 

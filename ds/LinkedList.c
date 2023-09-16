@@ -7,6 +7,7 @@ void DeleteLinkedList(LinkedList*);
 static void Append(LinkedList* this, void* value);
 static void Delete(LinkedList*, LinkedListNode*);
 static void* Get(LinkedList* this, int index);
+static void Print(LinkedList*);
 
 LinkedListNode* NewLinkedListNode(LinkedList* list, void* value);
 static void InsertAfter(LinkedListNode* this, void* value);    
@@ -102,12 +103,28 @@ static void* Get(LinkedList* this, int index) {
     return n->value;
 }
 
+static void Print(LinkedList* this) {
+    if (this->head == NULL)
+        return;
+
+    printf("%d", this->head->value);
+
+    LinkedListNode* next = this->head->next;
+    while (next) {
+        printf(", %d", next->value);
+        next = next->next;
+    }
+
+    printf("\n");
+}
+
 
 LinkedList* NewLinkedList() {
     LinkedList* l = calloc(1, sizeof(LinkedList));
     l->Append = Append;
     l->Get = Get;
     l->Delete = Delete;
+    l->Print = Print;
     return l;
 }
 

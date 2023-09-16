@@ -50,7 +50,7 @@ int Backtracking(Matrix* matrix, int row) {
     return count;
 }
 
-void Solve8Queens() 
+void _8_5_EightQueen() 
 {
     Matrix* matrix = NewMatrix(8, 8);
 

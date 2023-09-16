@@ -11,6 +11,7 @@ typedef struct LinkedList {
     void (*Append)(LinkedList*, void*);
     LinkedListNode* (*Get)(LinkedList*, int);
     void (*Delete)(LinkedList*, LinkedListNode*);
+    void (*Print)(LinkedList*);
 } LinkedList;
 
 typedef struct LinkedListNode {

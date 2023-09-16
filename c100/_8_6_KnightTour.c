@@ -29,7 +29,7 @@ static int valid(Matrix* m, int row, int col) {
     return 1;
 }
 
-void KnightTour(int rowCount, int colCount) {
+void _8_6_KnightTour(int rowCount, int colCount) {
     Matrix* m = NewMatrix(rowCount, colCount);
     Stack* stack = NewStack();
     int foundSolution = 0;
