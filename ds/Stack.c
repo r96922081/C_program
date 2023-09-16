@@ -7,6 +7,7 @@ static void Push(Stack*, void*);
 static void* Peek(Stack*);
 static void* Pop(Stack*);
 static int IsEmpty(Stack*);
+static int GetSize(Stack*);
 
 Stack* NewStack() {
     Stack* s = malloc(sizeof(Stack));
@@ -15,6 +16,7 @@ Stack* NewStack() {
     s->Peek = Peek;
     s->Pop = Pop;
     s->IsEmpty = IsEmpty;
+    s->GetSize = GetSize;
 
     return s;
 }
@@ -43,4 +45,8 @@ static int IsEmpty(Stack* s) {
         return 1;
     else
         return 0;
+}
+
+static int GetSize(Stack* s) {
+    return s->list->size;
 }

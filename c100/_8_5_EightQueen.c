@@ -1,8 +1,6 @@
-#include "../util/util.h"
-#include "../ds/ArrayList.h"
-#include "../ds/Matrix.h"
-#include "_8_5_EightQueen.h"
-
+#include "util.h"
+#include "ArrayList.h"
+#include "Matrix.h"
 
 int CheckValidity(Matrix* matrix, int row, int column) {
     int row2 = row - 1;

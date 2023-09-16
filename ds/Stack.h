@@ -10,7 +10,8 @@ typedef struct Stack {
     void (*Push)(Stack*, void*);
     void* (*Peek)(Stack*);
     void* (*Pop)(Stack*);
-    int (*IsEmpty)(Stack*)
+    int (*IsEmpty)(Stack*);
+    int (*GetSize)(Stack*);
 } Stack;
 
 Stack* NewStack();

@@ -1,1 +1,0 @@
-void Solve8Queens();
