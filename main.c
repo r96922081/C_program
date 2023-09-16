@@ -5,6 +5,7 @@
 #include "ArrayList.h"
 
 int main() {
+    _5_3_QuickSort();
     /*
     _8_1_MagicSquareOdd(5);
     _8_5_EightQueen();
