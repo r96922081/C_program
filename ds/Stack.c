@@ -1,5 +1,5 @@
 #include "Stack.h"
-#include "util.h"
+#include "Util.h"
 
 Stack* NewStack();
 void DeleteStack(Stack* s);

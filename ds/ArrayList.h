@@ -8,7 +8,6 @@ typedef struct ArrayList {
     int capacity;
     void** data;
     void (*Set)(ArrayList*, int index, void* value);
-    void (*Insert)(ArrayList*, void* value);
     void (*Append)(ArrayList*, void* value);
     void* (*Get)(ArrayList*, int index);
     void (*Delete)(ArrayList*, int index);
@@ -16,6 +15,7 @@ typedef struct ArrayList {
 } ArrayList;
 
 ArrayList* NewArrayList();
+ArrayList* NewArrayList2(int size);
 void DeleteArrayList(ArrayList*);
 
 void ArrayListUt();

@@ -1,14 +1,16 @@
 #include "ArrayList.h"
-#include "util.h"
+#include "Util.h"
 
 typedef struct ArrayList ArrayList;
 
 ArrayList* NewArrayList();
+ArrayList* NewArrayList2(int size);
 void DeleteArrayList(ArrayList* list) ;
 
 static void Append(ArrayList* list, void* value);
 static void* Get(ArrayList* list, int index);
 static void Set(ArrayList* list, int index, void* value);
+static void Delete(ArrayList* list, int index);
 static void Sort(ArrayList* list, int (*compareFunction)(const void *, const void*));
 static void Sort2(ArrayList* list, int low, int high, int (*compareFunction)(const void *, const void*));
 static int SortPartition(ArrayList* list, int low, int high, int (*compareFunction)(const void *, const void*));
@@ -16,23 +18,36 @@ static void SortSwap(ArrayList* list, int i, int j);
 
 
 ArrayList* NewArrayList() {
+    return NewArrayList2(0);
+}
+
+ArrayList* NewArrayList2(int size) {
     ArrayList* list = calloc(1, sizeof(ArrayList));
-    list->capacity = 1;    
-    list->data = malloc(1 * sizeof(void*));
+    list->capacity = size;
+    list->size = size;
+    if (size != 0)
+        list->data = calloc(sizeof(void*), size);
     list->Get = Get;
     list->Append = Append;
     list->Set = Set;
+    list->Delete = Delete;
     list->Sort = Sort;
 
-    return list;
+    return list;    
 }
 
 void DeleteArrayList(ArrayList* list) {
-    free(list->data);
+    if (list->data != NULL)
+        free(list->data);
     free(list);
 }
 
 static void Append(ArrayList* list, void* value) {
+    if (list->capacity == 0) {
+        list->capacity = 1;
+        list->data = calloc(1, sizeof(void*));    
+    }
+
     if (list->size + 1 > list->capacity) {
         list->capacity *= 2;
         void** data2 = malloc(list->capacity * sizeof(void*));
@@ -52,6 +67,43 @@ static void* Get(ArrayList* list, int index) {
 
 static void Set(ArrayList* list, int index, void* value) {
     *(list->data + index) = value;
+}
+
+static void Delete(ArrayList* list, int index) {
+    ArrayList* left = NULL;
+    ArrayList* right = NULL;
+    if (index != 0) {
+        int count = index;
+        left = NewArrayList2(count);
+        memcpy(left->data, list->data, sizeof(void*) * count);
+        left->size = count;
+        left->capacity = count;
+    }
+
+    if (index != list->size - 1) {
+        int count = list->size -1 - index;
+        right = NewArrayList2(count);
+        memcpy(right->data, list->data + (index + 1), sizeof(void*) * count);
+        right->size = count;
+        right->capacity = count;
+    }
+
+    free(list->data);
+    list->size--;
+    list->capacity = list->size;
+    if (list->size == 0)
+        list->data = NULL;
+    else
+        list->data = calloc(sizeof(void*), list->size);
+
+    if (left != NULL) {
+        memcpy(list->data, left->data, sizeof(void*) * left->size);
+        DeleteArrayList(left);  
+    }
+    if (right != NULL) {
+        memcpy(list->data + index, right->data, sizeof(void*) * right->size);
+        DeleteArrayList(right);  
+    }  
 }
 
 static void SortSwap(ArrayList* list, int i, int j) {

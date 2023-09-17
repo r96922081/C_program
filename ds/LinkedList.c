@@ -1,5 +1,5 @@
 #include "LinkedList.h"
-#include "util.h"
+#include "Util.h"
 
 LinkedList* NewLinkedList();
 void DeleteLinkedList(LinkedList*);

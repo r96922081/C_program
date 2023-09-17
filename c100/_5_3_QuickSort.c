@@ -1,4 +1,4 @@
-#include "util.h"
+#include "Util.h"
 #include "time.h"
 
 static int Pivot(int* a, int left, int right) {

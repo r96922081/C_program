@@ -1,4 +1,4 @@
-#include "util.h"
+#include "Util.h"
 #include "Stack.h"
 
 static Stack* s1;
@@ -21,7 +21,7 @@ static char* GetDiscName(Stack* s) {
 
 static void MoveOneDisc(Stack* from, Stack* to) {
     int disc = from->Pop(from);
-    
+
     if (!to->IsEmpty(to)) {
         int toTop = to->Peek(to);
         check(toTop > disc);

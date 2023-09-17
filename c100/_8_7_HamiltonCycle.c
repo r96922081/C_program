@@ -1,6 +1,6 @@
 #include "Matrix.h"
 #include "LinkedList.h"
-#include "util.h"
+#include "Util.h"
 
 static LinkedList* _8_7_HamiltonCycle_main(Matrix* m);
 /*
