@@ -7,6 +7,8 @@
         "_8_1_magicsquareodd.h": "c",
         "stack.h": "c",
         "type_traits": "c",
-        "Util.h": "c"
+        "Util.h": "c",
+        "_5_4_stablequicksort": "c",
+        "compare": "c"
     }
 }
