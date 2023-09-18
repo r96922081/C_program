@@ -12,6 +12,7 @@ void RunC100() {
     _8_6_KnightTour(5, 5);    
     _8_7_HamiltonCycle();
     _8_9_HonoiTower(4);  
+    _8_10_GameOfLife(6, 5);
 }
 
 void RunUt() {
