@@ -2,6 +2,11 @@
 #include "stdlib.h"
 #include "time.h"
 #include "assert.h"
+#include "string.h"
+#include "LinkedList.h"
+#include "ArrayList.h"
+#include "Matrix.h"
+#include "Stack.h"
 
 void check(int ret);
 

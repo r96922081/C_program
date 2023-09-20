@@ -12,6 +12,7 @@ typedef struct ArrayList {
     void* (*Get)(ArrayList*, int index);
     void (*Delete)(ArrayList*, int index);
     void (*Sort)(ArrayList* list, int (*compareFunction)(const void *, const void*));
+    void (*Print)(ArrayList*);
 } ArrayList;
 
 ArrayList* NewArrayList();

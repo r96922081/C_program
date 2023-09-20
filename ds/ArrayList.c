@@ -15,6 +15,7 @@ static void Sort(ArrayList* list, int (*compareFunction)(const void *, const voi
 static void Sort2(ArrayList* list, int low, int high, int (*compareFunction)(const void *, const void*));
 static int SortPartition(ArrayList* list, int low, int high, int (*compareFunction)(const void *, const void*));
 static void SortSwap(ArrayList* list, int i, int j);
+static void Print(ArrayList* this);
 
 
 ArrayList* NewArrayList() {
@@ -32,6 +33,7 @@ ArrayList* NewArrayList2(int size) {
     list->Set = Set;
     list->Delete = Delete;
     list->Sort = Sort;
+    list->Print = Print;
 
     return list;    
 }
@@ -40,6 +42,18 @@ void DeleteArrayList(ArrayList* list) {
     if (list->data != NULL)
         free(list->data);
     free(list);
+}
+
+static void Print(ArrayList* this) {
+    if (this->size != 0) {
+        printf("%d", this->Get(this, 0));
+        for (int i = 1; i < this->size; i++)
+        {
+            printf(", %d", this->Get(this, i));
+        }
+    }
+
+    printf("\n");
 }
 
 static void Append(ArrayList* list, void* value) {
