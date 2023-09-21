@@ -6,6 +6,7 @@
 
 void RunC100() {
     _5_1_InsertSortBinarySearch();
+    _5_2_ShellSort();
     _5_3_QuickSort();
     _5_4_StableQuickSort();
     _5_5_IterativeQuickSort();
@@ -23,9 +24,7 @@ void RunUt() {
 
 int main() {    
     //_8_8_EulerTrial();
-    RunC100();
-
-    
+    //RunC100();    
     //Ut();
 
     printf("main() ended\n");

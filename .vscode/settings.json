@@ -9,6 +9,7 @@
         "type_traits": "c",
         "Util.h": "c",
         "_5_4_stablequicksort": "c",
-        "compare": "c"
+        "compare": "c",
+        "queue.h": "c"
     }
 }

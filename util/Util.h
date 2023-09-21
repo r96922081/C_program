@@ -1,3 +1,6 @@
+#ifndef UTIL_H
+#define UTIL_H
+
 #include "stdio.h"
 #include "stdlib.h"
 #include "time.h"
@@ -7,6 +10,7 @@
 #include "ArrayList.h"
 #include "Matrix.h"
 #include "Stack.h"
+#include "Queue.h"
 
 void check(int ret);
 
@@ -20,3 +24,5 @@ typedef struct Triple {
     void* second;
     void* third;
 } Triple;
+
+#endif
