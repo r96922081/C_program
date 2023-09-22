@@ -11,6 +11,7 @@ void RunC100() {
     _5_4_StableQuickSort();
     _5_5_IterativeQuickSort();
     _5_6_FindMedian();
+    _5_7_HeapSort();
     _8_1_MagicSquareOdd(5);
     _8_5_EightQueen();
     _8_6_KnightTour(5, 5);    
@@ -27,8 +28,6 @@ int main() {
     //_8_8_EulerTrial();
     RunC100();    
     Ut();
-
-    
 
     printf("main() ended\n");
 }
