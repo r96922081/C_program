@@ -25,9 +25,9 @@ void RunUt() {
 }
 
 int main() {    
-    //_8_8_EulerTrial();
-    RunC100();    
-    Ut();
+    _8_8_EulerTrial();
+    //RunC100();    
+    //Ut();
 
     printf("main() ended\n");
 }

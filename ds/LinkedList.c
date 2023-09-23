@@ -6,6 +6,7 @@ void DeleteLinkedList(LinkedList*);
 
 static void Append(LinkedList* this, void* value);
 static void Delete(LinkedList*, LinkedListNode*);
+static void DeleteByValue(LinkedList*, void*);
 static void* Get(LinkedList* this, int index);
 static void Print(LinkedList*);
 
@@ -76,6 +77,16 @@ static void Delete(LinkedList* list, LinkedListNode* n) {
     free(n);
 }
 
+static void DeleteByValue(LinkedList* list, void* value) {
+    for (LinkedListNode* n = list->head; n != NULL;) {
+        LinkedListNode* next = n->next;
+        if (n->value == value) {
+            list->Delete(list, n);
+        }
+        n = next;
+    }
+}
+
 static void Append(LinkedList* this, void* value) {
     LinkedListNode* n = NewLinkedListNode(this, value);
 
@@ -124,6 +135,7 @@ LinkedList* NewLinkedList() {
     l->Append = Append;
     l->Get = Get;
     l->Delete = Delete;
+    l->DeleteByValue = DeleteByValue;
     l->Print = Print;
     return l;
 }
