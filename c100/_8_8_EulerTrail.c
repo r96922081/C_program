@@ -38,6 +38,25 @@ static int GetTrailHead(LinkedList* trail) {
     return (int)(trail->head->value);
 }
 
+static void ConcateTrail(LinkedListNode* this, LinkedList* toBeAppendedList) {
+    LinkedListNode* head = toBeAppendedList->head->next;
+    LinkedListNode* tail = toBeAppendedList->tail;
+
+    if (this == this->_list->tail) {
+        this->next = head;
+        head->prev = this;
+        this->_list->tail = tail;
+    } else {
+        tail->next = this->next;
+        head->prev = this;
+        this->next->prev = tail;
+        this->next = head;
+    }
+
+    free(toBeAppendedList->head);
+    free(toBeAppendedList);
+}
+
 static void EulerTrial(ArrayList* allEdges, int nodeCount, int odd1, int odd2) {
     LinkedList* allTrails = NewLinkedList();
     LinkedList** allTrailsTable= (void*)(calloc(sizeof(LinkedList*), nodeCount));
@@ -91,23 +110,32 @@ static void EulerTrial(ArrayList* allEdges, int nodeCount, int odd1, int odd2) {
         }
     }
 
+    /* debug print
     for (int i = 0; i < nodeCount; i++) {
         LinkedList* trail = allTrailsTable[i];
         if (trail != NULL)
             trail->Print(trail);
-    }
+    }*/
 
-    /*
     // merge all trails
     while (allTrails->size != 1) {
         LinkedList* trail = allTrails->Get(allTrails, 0);
         int head = GetTrailHead(trail);
         allTrailsTable[head] = NULL;
 
-        for (LinkedListNode* n = trail->head; n != NULL;) {
-
+        for (LinkedListNode* n = trail->head; n != NULL; n = n->next)  {
+            int node = n->value;
+            LinkedList* trail2 = allTrailsTable[node];
+            if (trail2 != NULL) {
+                ConcateTrail(n, trail2);
+                allTrailsTable[node] = NULL;
+                allTrails->DeleteByValue(allTrails, trail2);
+            }
         }
-    }*/
+    }
+
+    trail = allTrails->Get(allTrails, 0);
+    trail->Print(trail);
 
     for (LinkedListNode* n = allTrails->head; n != NULL; n = n->next) {
         DeleteLinkedList(n->value);

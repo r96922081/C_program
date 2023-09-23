@@ -16,6 +16,7 @@ void RunC100() {
     _8_5_EightQueen();
     _8_6_KnightTour(5, 5);    
     _8_7_HamiltonCycle();
+    _8_8_EulerTrial();
     _8_9_HonoiTower(4);  
     _8_10_GameOfLife(6, 5);
 }
@@ -24,10 +25,9 @@ void RunUt() {
     Ut();
 }
 
-int main() {    
-    _8_8_EulerTrial();
-    //RunC100();    
-    //Ut();
+int main() {
+    RunC100();    
+    Ut();
 
     printf("main() ended\n");
 }
