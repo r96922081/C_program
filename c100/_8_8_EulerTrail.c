@@ -59,7 +59,10 @@ static void ConcateTrail(LinkedListNode* this, LinkedList* toBeAppendedList) {
 
 static void EulerTrial(ArrayList* allEdges, int nodeCount, int odd1, int odd2) {
     LinkedList* allTrails = NewLinkedList();
-    LinkedList** allTrailsTable= (void*)(calloc(sizeof(LinkedList*), nodeCount));
+    
+    LinkedList* allTrailsTable[nodeCount];
+    for (int i = 0; i < nodeCount; i++)
+        allTrailsTable[i] = NULL; 
 
     int node = -1;
     LinkedList* trail = NULL;

@@ -4,4 +4,5 @@ void Ut()
     StackUt();
     LinkedListUt();
     ArrayListUt();
+    HashTableUt();
 }

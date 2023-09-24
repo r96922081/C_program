@@ -1,8 +1,4 @@
-#include "stdio.h"
-#include "stdlib.h"
 #include "Util.h"
-#include "LinkedList.h"
-#include "ArrayList.h"
 
 void RunC100() {
     _5_1_InsertSortBinarySearch();
@@ -26,8 +22,9 @@ void RunUt() {
 }
 
 int main() {
-    RunC100();    
-    Ut();
+    //RunC100();    
+    //Ut();
 
+    HashTableUt();
     printf("main() ended\n");
 }

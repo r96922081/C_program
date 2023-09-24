@@ -11,6 +11,7 @@
 #include "Matrix.h"
 #include "Stack.h"
 #include "Queue.h"
+#include "HashTable.h"
 
 void check(int ret);
 
