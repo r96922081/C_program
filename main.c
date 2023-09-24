@@ -9,7 +9,8 @@ void RunC100() {
     _5_6_FindMedian();
     _5_7_HeapSort();
     _5_8_HeapSort2();
-    _5_9_MergeSort();
+    _5_9_MergeSort(); 
+    _5_10_BucketSort();  
     _8_1_MagicSquareOdd(5);
     _8_5_EightQueen();
     _8_6_KnightTour(5, 5);    
@@ -24,10 +25,8 @@ void RunUt() {
 }
 
 int main() {
-    RunC100();    
-    Ut();
-
-    
+    //RunC100();    
+    //Ut();
 
     printf("main() ended\n");
 }
