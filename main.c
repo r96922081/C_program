@@ -8,6 +8,7 @@ void RunC100() {
     _5_5_IterativeQuickSort();
     _5_6_FindMedian();
     _5_7_HeapSort();
+    _5_8_HeapSort2();
     _8_1_MagicSquareOdd(5);
     _8_5_EightQueen();
     _8_6_KnightTour(5, 5);    
@@ -22,9 +23,8 @@ void RunUt() {
 }
 
 int main() {
-    //RunC100();    
-    //Ut();
+    RunC100();    
+    Ut();
 
-    HashTableUt();
     printf("main() ended\n");
 }

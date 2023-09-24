@@ -6,6 +6,8 @@
 #include "time.h"
 #include "assert.h"
 #include "string.h"
+#include "math.h"
+
 #include "LinkedList.h"
 #include "ArrayList.h"
 #include "Matrix.h"

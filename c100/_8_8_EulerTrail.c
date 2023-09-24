@@ -145,7 +145,6 @@ static void EulerTrial(ArrayList* allEdges, int nodeCount, int odd1, int odd2) {
     }
 
     DeleteLinkedList(allTrails);
-    free(allTrailsTable);
 }
 
 static void EularTrailAllEven() {

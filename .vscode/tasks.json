@@ -9,6 +9,7 @@
 				"-w",
 				"-fdiagnostics-color=always",
 				"-g",
+				"-lm",
 				"${workspaceFolder}/*.c",
 				"${workspaceFolder}/ds/*.c",
 				"${workspaceFolder}/c100/*.c",
