@@ -124,7 +124,5 @@ void _5_12_EvenDuplicate() {
         DeleteLinkedList(list);
     }
 
-
-
     DeleteLinkedList(all);
 }
