@@ -71,7 +71,6 @@ void FixHeap(int* heap, int heapSize) {
         heap[minChild] = parentValue;
         parent = minChild;
     }
-
 }
 
 void _5_13_HeapMerge() {

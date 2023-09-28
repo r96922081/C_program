@@ -13,6 +13,9 @@ void RunC100() {
     _5_10_BucketSort();  
     _5_11_SingleDuplicate();
     _5_12_EvenDuplicate();
+    _5_13_HeapMerge();
+    _5_14_Unique();
+    _5_15_ZeroSum();
     _8_1_MagicSquareOdd(5);
     _8_5_EightQueen();
     _8_6_KnightTour(5, 5);    
@@ -27,8 +30,8 @@ void RunUt() {
 }
 
 int main() {
-    //RunC100();    
-    //Ut();    
-    _5_13_HeapMerge();
+    RunC100();    
+    Ut();    
+    
     printf("main() ended\n");
 }
