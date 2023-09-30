@@ -17,6 +17,11 @@
 
 void check(int ret);
 
+typedef struct Point {
+    int x;
+    int y;
+} Point;
+
 typedef struct Pair {
     void* first;
     void* second;
@@ -27,5 +32,8 @@ typedef struct Triple {
     void* second;
     void* third;
 } Triple;
+
+Point* NewPoint(int x, int y);
+Pair* NewPair(void* first, void* second);
 
 #endif

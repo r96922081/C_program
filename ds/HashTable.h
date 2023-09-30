@@ -12,9 +12,11 @@ typedef struct HashTable {
     void* (*Get)(HashTable*, int);
     int (*Contain)(HashTable*, int); // eliminate unclear return value 0 & NULL of Get()
     void (*Delete)(HashTable*, int);
+    LinkedList* keyList;
 } HashTable;
 
 typedef struct TableElement {
+    LinkedListNode* _keyNode;
     int key;
     void* value;
 } TableElement;

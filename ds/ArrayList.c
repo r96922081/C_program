@@ -6,6 +6,7 @@ typedef struct ArrayList ArrayList;
 ArrayList* NewArrayList();
 ArrayList* NewArrayList2(int size);
 void DeleteArrayList(ArrayList* list) ;
+void DeleteArrayListAndElement(ArrayList* list) ;
 
 static void Append(ArrayList* list, void* value);
 static void* Get(ArrayList* list, int index);
@@ -16,6 +17,7 @@ static void Sort2(ArrayList* list, int low, int high, int (*compareFunction)(con
 static int SortPartition(ArrayList* list, int low, int high, int (*compareFunction)(const void *, const void*));
 static void SortSwap(ArrayList* list, int i, int j);
 static void Print(ArrayList* this);
+static void Print2(ArrayList* this, void (*printFunction)(const void*)) ;
 
 
 ArrayList* NewArrayList() {
@@ -34,6 +36,7 @@ ArrayList* NewArrayList2(int size) {
     list->Delete = Delete;
     list->Sort = Sort;
     list->Print = Print;
+    list->Print2 = Print2;
 
     return list;    
 }
@@ -44,12 +47,32 @@ void DeleteArrayList(ArrayList* list) {
     free(list);
 }
 
+void DeleteArrayListAndElement(ArrayList* list) {
+    for (int i = 0; i < list->size; i++)
+        free(*(list->data + i));
+    DeleteArrayList(list);
+}
+
 static void Print(ArrayList* this) {
     if (this->size != 0) {
         printf("%d", this->Get(this, 0));
         for (int i = 1; i < this->size; i++)
         {
             printf(", %d", this->Get(this, i));
+        }
+    }
+
+    printf("\n");
+}
+
+
+static void Print2(ArrayList* this, void (*printFunction)(const void*)) {
+    if (this->size != 0) {
+        printFunction(this->Get(this, 0));
+        for (int i = 1; i < this->size; i++)
+        {
+            printf(", ");
+            printFunction(this->Get(this, i));
         }
     }
 

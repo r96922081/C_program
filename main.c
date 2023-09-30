@@ -16,6 +16,7 @@ void RunC100() {
     _5_13_HeapMerge();
     _5_14_Unique();
     _5_15_ZeroSum();
+    _5_16_DominateSet();
     _8_1_MagicSquareOdd(5);
     _8_5_EightQueen();
     _8_6_KnightTour(5, 5);    
@@ -30,8 +31,11 @@ void RunUt() {
 }
 
 int main() {
-    RunC100();    
-    Ut();    
+    
+    //RunC100();    
+    //Ut();  
+
+    _5_17_MaxVisitor();
     
     printf("main() ended\n");
 }

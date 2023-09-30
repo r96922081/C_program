@@ -16,7 +16,9 @@ void HashTableUt() {
     check(table->Get(table, 3) == NULL);
     check(table->Get(table, 4) == NULL);
     check(table->Contain(table, 3) == 1);
-    check(table->Contain(table, 4) == 0);    
+    check(table->Contain(table, 4) == 0);   
+
+    table->keyList->Print(table->keyList); 
 
     DeleteHashTable(table);
 }

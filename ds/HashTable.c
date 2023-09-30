@@ -31,6 +31,7 @@ HashTable* NewHashTable() {
     ht->Delete = Delete;
     ht->Put = Put;
     ht->Contain = Contain;
+    ht->keyList = NewLinkedList();
     return ht;
 }
 
@@ -41,6 +42,7 @@ void DeleteHashTable(HashTable* ht) {
             free(n->value);
         DeleteLinkedList(list);
     }
+    DeleteLinkedList(ht->keyList);
     free(ht->_table);
     free(ht);
 }
@@ -51,12 +53,15 @@ static void Put(HashTable* ht, int key, void* value) {
         TableElement* e = n->value;
         if (e->key == key) {
             e->value = value;
+            e->_keyNode->value = e;
             return;
         }
     }
     TableElement* e = malloc(sizeof(TableElement));
     e->key = key;
     e->value = value;
+    ht->keyList->Append(ht->keyList, e);    
+    e->_keyNode = ht->keyList->tail;
     bucket->Append(bucket, e);
 }
 
@@ -89,6 +94,7 @@ static void Delete(HashTable* ht, int key) {
     for (LinkedListNode* n = bucket->head; n != NULL; n = n->next) {
         TableElement* e = n->value;
         if (e->key == key) {
+            ht->keyList->Delete(ht->keyList, e->_keyNode);
             free(n->value);
             bucket->Delete(bucket, n);
             break;

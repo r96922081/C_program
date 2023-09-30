@@ -13,11 +13,13 @@ typedef struct ArrayList {
     void (*Delete)(ArrayList*, int index);
     void (*Sort)(ArrayList* list, int (*compareFunction)(const void *, const void*));
     void (*Print)(ArrayList*);
+    void (*Print2)(ArrayList* this, void (*printFunction)(const void*)) ;
 } ArrayList;
 
 ArrayList* NewArrayList();
 ArrayList* NewArrayList2(int size);
 void DeleteArrayList(ArrayList*);
+void DeleteArrayListAndElement(ArrayList*);
 
 void ArrayListUt();
 
