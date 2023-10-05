@@ -34,8 +34,10 @@ void RunUt() {
 
 int main() {
     
-    RunC100();    
-    Ut();  
+    //RunC100();    
+    //Ut();  
+
+    _6_4_KMP();
     
     printf("main() ended\n");
 }
