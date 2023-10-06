@@ -14,6 +14,7 @@
 #include "Stack.h"
 #include "Queue.h"
 #include "HashTable.h"
+#include "String.h"
 
 void check(int ret);
 

@@ -5,4 +5,5 @@ void Ut()
     LinkedListUt();
     ArrayListUt();
     HashTableUt();
+    StringUt();
 }

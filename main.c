@@ -19,6 +19,8 @@ void RunC100() {
     _5_16_DominateSet();
     _5_17_MaxVisitor();
     _5_18_Contain();
+    _6_1_ParenthesesMatch();
+    _6_2_Postfix();
     _8_1_MagicSquareOdd(5);
     _8_5_EightQueen();
     _8_6_KnightTour(5, 5);    
@@ -32,12 +34,10 @@ void RunUt() {
     Ut();
 }
 
-int main() {
-    
-    //RunC100();    
-    //Ut();  
-
-    _6_4_KMP();
+int main() {    
+    RunC100();    
+    Ut();
+    //_6_4_KMP();
     
     printf("main() ended\n");
 }

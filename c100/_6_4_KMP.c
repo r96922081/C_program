@@ -22,28 +22,30 @@ static int KMP(char* text, char* pattern) {
     int patternSize = strlen(pattern);
 
     // build prefixTable
-    int* prefixTable2 = (int*)calloc(1, patternSize * sizeof(int));
     int* prefixTable = (int*)calloc(1, patternSize * sizeof(int));
 
-    for (int i = patternSize - 2; i >= 0; i--) {
-        int len = 0;
-        while (1) {
-            if (len + i > patternSize || (pattern[i - len] != pattern[patternSize - 1 - len]))
+    for (int i = patternSize - 1; i > 0; i--) {
+        int ok = 1;
+        int j = i - 1;
+        int diff = i - j;
+        for (;j >= 0; j--) {
+            if (pattern[j] != pattern[j + diff]) {
+                ok = 0;
                 break;
-            len++;
+            }
         }
-        prefixTable2[i] = len;
-    }
-
-    for (int i = 0; i < patternSize - 1; i++) {
-        prefixTable[i - prefixTable2[i] + 1] = prefixTable2[i];
+        if (ok) {
+            prefixTable[i] = diff;
+        } else {
+            prefixTable[i] = i + 1;
+        }
+            
     }
 
     for (int i = 0; i < patternSize; i++)
         printf("%d\n", prefixTable[i]);
 
 
-    free(prefixTable2);
     free(prefixTable);
     
     return -1;
